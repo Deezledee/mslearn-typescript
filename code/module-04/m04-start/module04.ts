@@ -3,14 +3,15 @@
 
 /*  EXERCISE 1
     TODO: Declare a new function type for the sortDescending and sortAscending functions. */
-    
+    type compareFunctionType = (a: number, b:number) => number;
+
 
 /*  TODO: Convert the sortDescending and sortAscending functions to arrow 
     functions. */
 
 /*  sortDescending is a comparison function that tells the sort method how to sort 
     numbers in descending order */
-function sortDescending(a, b) {
+let sortDescending: compareFunctionType = (a, b) => {
 if (a > b) {
     return -1;
 } else if (b > a) {
@@ -22,7 +23,7 @@ if (a > b) {
 
 /*  sortDescending is a comparison function that tells the sort method how to sort 
     numbers in ascending order. */
-function sortAscending(a, b) {
+let sortAscending: compareFunctionType = (a, b) =>  {
 if (a > b) {
     return 1;
 } else if (b > a) {
@@ -32,13 +33,15 @@ if (a > b) {
 }
 }
 
+
+
 /*  The buildArray function builds an array of unique random numbers containing the number 
     of items based on the number passed to it. The sortOrder parameter determines 
     whether to sort the array in ascending or descending order. */
 
 /*  TODO: Update the BuildArray function. */
 
-function buildArray(items, sortOrder) {
+function buildArray(items: number, sortOrder: 'ascending' | 'descending'): number[] {
     let randomNumbers = [];
     let nextNumber;
     for (let counter = 0; counter < items; counter++) {
@@ -62,9 +65,12 @@ let myArray2 = buildArray(8, 'descending');
 /*  EXERCISE 2
     TODO: Update the LoanCalculator function. */
 
-function loanCalculator (principle, interestRate, months) {
-    let interest = interestRate / 1200;   // Calculates the monthly interest rate
-    let payment;
-    payment = principle * interest / (1 - (Math.pow(1/(1 + interest), months)));
+function loanCalculator (principal: number, interestRate: number, months = 12): string {
+    let interest: number = interestRate / 1200;   // Calculates the monthly interest rate
+    let payment: number;
+    payment = principal * interest / (1 - (Math.pow(1/(1 + interest), months)));
     return payment.toFixed(2);
 }
+
+let myLoan = loanCalculator(1000, 5);
+console.log(myLoan);
